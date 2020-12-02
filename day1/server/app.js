@@ -32,6 +32,36 @@ app.get('/api/books/:bookId', (req, res) => {
     })
 })
 
+app.put('/api/books/:bookId', (req, res) => {
+    
+    const title = req.body.title
+    const author = req.body.author
+    const year = req.body.year
+    const review = req.body.review
+    const coverUrl = req.body.coverUrl
+    const bookId = req.params.bookId
+
+    
+    models.Book.update(
+        {
+            id: bookId,
+            title: title,
+            author: author,
+            year: year,
+            review: review,
+            coverUrl: coverUrl
+        },
+        {
+            where: {
+                id: bookId
+            }
+        })
+        
+        // book.save()
+
+        res.json({success: true})
+}) 
+
 app.post('/api/books', (req, res) => {
     
     const title = req.body.title
