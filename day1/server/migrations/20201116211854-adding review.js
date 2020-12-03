@@ -11,7 +11,9 @@ module.exports = {
     return queryInterface.addColumn(
       'Books',
       'review',
-     Sequelize.STRING
+        {
+          type: Sequelize.STRING
+        }
     )
 
   },
@@ -27,7 +29,9 @@ module.exports = {
     return queryInterface.removeColumn(
       'Books',
       'review',
-     Sequelize.STRING
+      {
+        type: Sequelize.STRING
+      }
     )
   }
 };

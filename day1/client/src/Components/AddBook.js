@@ -1,11 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function AddBook () {
+function AddBooks(props) {
+    
+    const [books, setBooks] = useState({})
+
+    const handleChange = (e) => {
+        setBooks({
+            ...books,
+            [e.target.name]: e.target.value
+        })
+    }
+    //add book
+    const handleOnClick = (e) => {
+        fetch("http://localhost:8080/api/books", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(books)
+        }).then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    props.history.push("/")
+
+                }
+            })
+    }
+
     return (
-        <div>
-        <h1>this is add book</h1>
+        <div className="inputContainer">
+            <input type="text" name="title" placeholder="Title" onChange={handleChange} />
+            <input type="text" name="author" placeholder="Author" onChange={handleChange} />
+            <input type="text" name="year" placeholder="Year" onChange={handleChange} />
+            <input type="text" name="review" placeholder="Review" onChange={handleChange} />
+            <input type="text" name="cover" placeholder="Cover Art" onChange={handleChange} />
+            <button onClick={handleOnClick}>Submit</button>
         </div>
     )
 }
-
-export default AddBook;
+export default AddBooks

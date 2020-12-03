@@ -1,13 +1,14 @@
 
 
 import React from 'react'
+import Menu from './Menu';
 
 function BaseLayout (props) {
     return (
         <div>
-            <h1>HEADER</h1>
+            <Menu />            
             <div>{props.children}</div>
-            <h1>FOOTER</h1>
+            <h1>© 2020</h1>
         </div>
     )
 }

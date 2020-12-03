@@ -2,12 +2,11 @@
 const models = require('./models')
 const express = require('express')
 const app = express()
-const {Op} = require('sequelize')
+const { Op } = require('sequelize')
 const cors = require('cors')
 
 app.use(cors())
 app.use(express.json()) // body parser
-
 
 
 
@@ -57,10 +56,9 @@ app.put('/api/books/:bookId', (req, res) => {
             }
         })
         
-        // book.save()
-
         res.json({success: true})
 }) 
+
 
 app.post('/api/books', (req, res) => {
     

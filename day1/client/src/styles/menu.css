@@ -1,0 +1,13 @@
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rightButtons {
+    display: flex;
+}
+
+h2 {
+    margin: 10px;
+}
