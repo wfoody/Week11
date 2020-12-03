@@ -1,0 +1,11 @@
+ssh-keygen -t rsa -b 4096 -C 'foodyw@gmail.com' -f ~/.ssh/github/id_rsa -q -N ''
+
+cat ~/.ssh/github/id_rsa.pub
+
+touch ~/.ssh/config
+chmod 600 ~/.ssh/config
+
+Host github.com
+    IdentityFile ~/.ssh/github/id_rsa
+
+ssh -T git@github.com
